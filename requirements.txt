@@ -1,8 +1,0 @@
-dataclasses;python_version<'3.7'
-torch>=1.6.0
-pytorch-lightning==1.1.4
-seqeval
-transformers==3.4.0
-#tensorboardX==1.9
-spacy>=2.3.0,<2.4.0
-https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.3.1/en_core_web_sm-2.3.1.tar.gz#egg=en_core_web_sm
