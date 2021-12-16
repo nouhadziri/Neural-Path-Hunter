@@ -82,7 +82,7 @@ Here is a sample of the file containing machine-generated responses:
 ```
 
 ## Citation
-Please cite the following paper if you used our work in your research:
+Please cite our work if you use it in your research:
 ```angular2html
 @inproceedings{dziri-etal-2021-neural,
     title = "Neural Path Hunter: Reducing Hallucination in Dialogue Systems via Path Grounding",
