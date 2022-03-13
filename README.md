@@ -48,7 +48,7 @@ python -m dialkg.mask_refine --model_name_or_path gpt2 --train_dataset_path <PAT
 </pre>
 
 ## NPH Refinement
-To fix the hallucinated responses,  download the [token-level hallucination critic]() and run the following command:
+To fix the hallucinated responses,  download the [token-level hallucination critic](https://drive.google.com/file/d/1OKOH_T0eYKT7ZPid6nwwRrzFQfzE7_Mz/view?usp=sharing) and run the following command:
 ```
 python -m dialkg.mask_refine --refine_only --model_name_or_path <PATH_TRAINED_NPH>  --kge <PATH_GRAPH_EMBED> --graph_file <PATH_TO_GRAPH_FILE> --pad_to_multiple_of 8 --halluc_classifier <PATH_HALLUCINATION_CLASSIFIER> --generated_path <PATH_TO_RESPONSES_TO_FIX> --do_generate  --eval_batch_size 16 
 ```
