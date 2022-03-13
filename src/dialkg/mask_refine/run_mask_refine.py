@@ -5,7 +5,6 @@ import shutil
 from argparse import ArgumentParser, Namespace
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
-from enum import Enum
 
 import pytorch_lightning as pl
 import spacy
@@ -54,26 +53,9 @@ from ..generate import generate_no_beam_search
 from ..kge import KnowledgeGraphEmbedding
 from ..lightning_base import BaseTransformer, generic_train, add_generic_args
 from ..log_utils import is_wandb_available, authorize_wandb
-
+from ..token_hallucination.data import NERLabel
 
 logger = logging.getLogger("run_mask_refine")
-
-
-class NERLabel(Enum):
-    O = ("O", 0)
-    B = ("B-Halluc", 1)
-    I = ("I-Halluc", 2)
-
-    @classmethod
-    def of(cls, label_id: int) -> "NERLabel":
-        for lbl in NERLabel:
-            if lbl.value[1] == label_id:
-                return lbl
-        raise ValueError(f"label_id not found: {label_id}")
-
-    @classmethod
-    def map(cls) -> Dict[int, str]:
-        return {l.value[1]: l.value[0] for l in NERLabel}
 
 
 class DialogueMaskRefineTransformer(BaseTransformer):
@@ -1157,7 +1139,6 @@ def main():
         extra_callbacks.append(
             pl.callbacks.EarlyStopping(
                 monitor="valid/lm_ppl",
-                # monitor="valid/hits1",
                 min_delta=args.min_delta,
                 patience=args.patience,
                 verbose=False,
